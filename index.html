@@ -15,9 +15,20 @@
       h1 {
           color: #333;
       }
+      h2 {
+          color: #555;
+      }
       p {
           font-size: 18px;
           color: #666;
+      }
+      .project, .video {
+          margin: 20px 0;
+          padding: 20px;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
       button {
           padding: 10px 20px;
@@ -36,6 +47,28 @@
 <body>
   <h1>This is my Portfolio</h1>
   <p>Welcome to my portfolio website.</p>
+  
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Project 1</h3>
+      <p>Description of Project 1.</p>
+    </div>
+    <div class="project">
+      <h3>Project 2</h3>
+      <p>Description of Project 2.</p>
+    </div>
+  </section>
+
+  <section id="videos">
+    <h2>My Videos</h2>
+    <div class="video">
+      <h3>Sample Video</h3>
+      <!-- Replace the src URL with your YouTube video URL -->
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </section>
+
   <button onclick="showMessage()">Click here</button>
 
   <script>
