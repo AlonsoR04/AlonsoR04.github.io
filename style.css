@@ -1,7 +1,8 @@
-body {
-  font-family: 'Raleway', sans-serif;
-  background: rgba(242, 242, 242, .6);
+html, body {
+  overflow: hidden;
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 * {
