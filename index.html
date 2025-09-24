@@ -16,52 +16,89 @@
         <title>Alonso Rios Guerra - Portfolio</title>
     </head>
     <!-- Botón flotante del chatbot -->
-        <button id="chatbot-button" style="
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #0078FF;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 28px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 10000;
-        ">
-        💬
-        </button>
+    <button id="chatbot-button">💬</button>
 
-        <!-- Contenedor del chatbot (inicia oculto) -->
-        <div id="chatbot-container" style="
-            display: none;
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 450px;
-            height: 500px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            overflow: hidden;
-            z-index: 9999;
-        ">
-            <iframe 
-                src="https://n8n.srv1013081.hstgr.cloud/webhook/a5da68b0-e7af-4853-b4ba-45d4efaf6344/chat" 
-                style="width:100%; height:100%; border:none;">
-            </iframe>
-        </div>
-        <script>
-            const btn = document.getElementById("chatbot-button");
-            const chat = document.getElementById("chatbot-container");
+    <!-- Contenedor del chatbot (inicia oculto) -->
+    <div id="chatbot-container">
+    <iframe 
+        src="https://n8n.srv1013081.hstgr.cloud/webhook/a5da68b0-e7af-4853-b4ba-45d4efaf6344/chat">
+    </iframe>
+    </div>
 
-            btn.addEventListener("click", () => {
-                chat.style.display = (chat.style.display === "none" || chat.style.display === "") 
-                    ? "block" 
-                    : "none";
-            });
-        </script>
+    <style>
+    /* Botón flotante */
+    #chatbot-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #0078FF;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 10000;
+    }
+
+    /* Contenedor del chatbot */
+    #chatbot-container {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 40%;
+        height: 50%;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        overflow: hidden;
+        z-index: 9999;
+    }
+
+    #chatbot-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+        #chatbot-container {
+        width: 60%;
+        height: 55%;
+        }
+    }
+
+    /* Móviles */
+    @media (max-width: 768px) {
+        #chatbot-container {
+        width: 90%;
+        height: 70%;
+        bottom: 80px;
+        right: 5%;
+        }
+
+        #chatbot-button {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        }
+    }
+    </style>
+
+    <script>
+    const btn = document.getElementById("chatbot-button");
+    const chat = document.getElementById("chatbot-container");
+
+    btn.addEventListener("click", () => {
+        chat.style.display = (chat.style.display === "none" || chat.style.display === "") 
+        ? "block" 
+        : "none";
+    });
+    </script>
+
 
 
     <body>
