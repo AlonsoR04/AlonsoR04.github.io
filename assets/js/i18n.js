@@ -62,6 +62,7 @@ const translations = {
         contact_phone: "Teléfono:",
         contact_email: "Email:",
         contact_linkedin: "LinkedIn:",
+        contact_linkedin_link: "Ver Perfil",
         
         // Footer
         footer_copy: "© Alonso Rios Guerra. Template by Bedimcode"
@@ -128,6 +129,7 @@ const translations = {
         contact_phone: "Phone:",
         contact_email: "Email:",
         contact_linkedin: "LinkedIn:",
+        contact_linkedin_link: "View Profile",
         
         // Footer
         footer_copy: "© Alonso Rios Guerra. Template by Bedimcode"

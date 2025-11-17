@@ -493,27 +493,76 @@ img {
     padding: 40px 20px;
 }
 
-.contact-info {
-    display: inline-block;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.3rem; /* tamaño del texto aumentado */
-    line-height: 2;
+.contact__container {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.contact-info i {
-    font-size: 1.5rem;  /* tamaño del icono aumentado */
-    margin-right: 10px;
-    color: #0077b5;
+.contact__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
 }
 
-.contact-info a {
-    color: #333;
+.contact__item {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact__item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+
+.contact__icon {
+    font-size: 2.5rem;
+    color: var(--first-color);
+}
+
+.contact__label {
+    font-size: 0.9rem;
+    font-weight: var(--font-semi);
+    color: var(--second-color);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact__link {
+    color: var(--first-color);
     text-decoration: none;
+    font-weight: var(--font-semi);
+    font-size: 1rem;
+    transition: 0.3s;
+    word-break: break-word;
 }
 
-.contact-info a:hover {
+.contact__link:hover {
+    color: var(--second-color);
     text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact__item {
+        padding: 20px;
+    }
+
+    .contact__icon {
+        font-size: 2rem;
+    }
 }
 
 
