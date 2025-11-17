@@ -57,6 +57,12 @@ const translations = {
         project3_desc2: "Reconocimiento de gestos y comandos de voz desde móvil.",
         project3_desc3: "Uso de diversas APIs para funciones domóticas avanzadas.",
         
+        project4_title: "Nuevo Proyecto",
+        project4_desc: "Estoy trabajando en nuevos proyectos interesantes. ¡Pronto estarán disponibles!",
+        
+        project_repo: "Ver Repositorio",
+        project_coming: "Próximamente",
+        
         // Contact
         contact_title: "Contacto",
         contact_phone: "Teléfono:",
@@ -123,6 +129,12 @@ const translations = {
         project3_desc1: "Web interface connected to a Node.js backend.",
         project3_desc2: "Gesture and voice command recognition from mobile.",
         project3_desc3: "Use of various APIs for advanced home automation functions.",
+        
+        project4_title: "New Project",
+        project4_desc: "I'm working on interesting new projects. Coming soon!",
+        
+        project_repo: "View Repository",
+        project_coming: "Coming Soon",
         
         // Contact
         contact_title: "Contact",
