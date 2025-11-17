@@ -111,16 +111,21 @@
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active-link">Inicio</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">¿Quien soy?</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Habilidades</a></li>
-                        <li class="nav__item"><a href="#work" class="nav__link">Proyectos</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contacto</a></li>
+                        <li class="nav__item"><a href="#home" class="nav__link active-link" data-translate="nav_inicio">Inicio</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link" data-translate="nav_about">¿Quien soy?</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link" data-translate="nav_skills">Habilidades</a></li>
+                        <li class="nav__item"><a href="#work" class="nav__link" data-translate="nav_work">Proyectos</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link" data-translate="nav_contact">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="nav__toggle" id="nav-toggle">
                     <i class='bx bx-menu'></i>
+                </div>
+
+                <div class="nav__language">
+                    <button class="lang-btn active" data-lang="es" onclick="changeLanguage('es')" title="Español"><i class='bx bx-globe'></i><span class="lang-label">ES</span></button>
+                    <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')" title="English"><i class='bx bx-globe'></i><span class="lang-label">EN</span></button>
                 </div>
             </nav>
         </header>
@@ -129,10 +134,10 @@
             <!--===== HOME =====-->
             <section class="home bd-grid" id="home">
                 <div class="home__data">
-                    <h1 class="home__title"><br><span class="home__title-color">Alonso Rios Guerra</span><br><span class="home__subtitle">Ingeniero Informático</span></h1>
+                    <h1 class="home__title"><br><span class="home__title-color" data-translate="home_title">Alonso Rios Guerra</span><br><span class="home__subtitle" data-translate="home_subtitle">Ingeniero Informático</span></h1>
 
-                    <a href="assets/docs/cv_alonso_rios_guerra_esp.pdf" class="button" download target="_blank">
-                        <i class='bx bx-download'></i> Descargar CV
+                    <a href="assets/docs/cv_alonso_rios_guerra_esp.pdf" class="button" id="cv-link" download target="_blank">
+                        <i class='bx bx-download'></i> <span data-translate="home_download">Descargar CV</span>
                     </a>
                 </div>
 
@@ -156,7 +161,7 @@
 
             <!--===== ABOUT =====-->
             <section class="about section " id="about">
-                <h2 class="section-title">¿Quien soy?</h2>
+                <h2 class="section-title" data-translate="about_title">¿Quien soy?</h2>
 
                 <div class="about__container bd-grid">
                     <div class="about__img">
@@ -164,8 +169,8 @@
                     </div>
                     
                     <div>
-                        <h2 class="about__subtitle">Soy Alonso Rios Guerra</h2>
-                        <p class="about__text">Un estudiante de cuarto año de Ingeniería Informática con sólidos
+                        <h2 class="about__subtitle" data-translate="about_name">Soy Alonso Rios Guerra</h2>
+                        <p class="about__text" data-translate="about_text">Un estudiante de cuarto año de Ingeniería Informática con sólidos
                             conocimientos en desarrollo web, estructuras de datos, programación
                             orientada a objetos, sistemas distribuidos y machine learning, entre otros.
                             Una persona competitiva y ambiciosa con un alto nivel de responsabilidad
@@ -179,12 +184,12 @@
 
             <!--===== SKILLS =====-->
             <section class="skills section" id="skills">
-            <h2 class="section-title">Habilidades</h2>
+            <h2 class="section-title" data-translate="skills_title">Habilidades</h2>
 
             <div class="skills__grid">
                 <!-- Técnicas: columna alta -->
                 <div class="skills__box skills__box--full">
-                <h3 class="skills__subtitle">Técnicas</h3>
+                <h3 class="skills__subtitle" data-translate="skills_technical">Técnicas</h3>
                 <div class="skills__data"><i class='bx bxl-python skills__icon'></i><span class="skills__name">Python</span></div>
                 <div class="skills__data"><i class='bx bxl-c-plus-plus skills__icon'></i><span class="skills__name">C, C++</span></div>
                 <div class="skills__data"><i class='bx bxl-javascript skills__icon'></i><span class="skills__name">JavaScript</span></div>
@@ -202,21 +207,21 @@
 
                 <!-- Blandas: derecha arriba -->
                 <div class="skills__box">
-                <h3 class="skills__subtitle">Blandas</h3>
-                <div class="skills__data"><i class='bx bxs-group skills__icon'></i><span class="skills__name">Trabajo en equipo</span></div>
-                <div class="skills__data"><i class='bx bxs-brain skills__icon'></i><span class="skills__name">Creatividad</span></div>
-                <div class="skills__data"><i class='bx bxs-rocket skills__icon'></i><span class="skills__name">Pensamiento crítico</span></div>
-                <div class="skills__data"><i class='bx bxs-chat skills__icon'></i><span class="skills__name">Comunicación efectiva</span></div>
+                <h3 class="skills__subtitle" data-translate="skills_soft">Blandas</h3>
+                <div class="skills__data"><i class='bx bxs-group skills__icon'></i><span class="skills__name" data-translate="skills_teamwork">Trabajo en equipo</span></div>
+                <div class="skills__data"><i class='bx bxs-brain skills__icon'></i><span class="skills__name" data-translate="skills_creativity">Creatividad</span></div>
+                <div class="skills__data"><i class='bx bxs-rocket skills__icon'></i><span class="skills__name" data-translate="skills_critical">Pensamiento crítico</span></div>
+                <div class="skills__data"><i class='bx bxs-chat skills__icon'></i><span class="skills__name" data-translate="skills_communication">Comunicación efectiva</span></div>
                 </div>
 
                 <!-- Idiomas: derecha abajo -->
                 <div class="skills__box">
-                <h3 class="skills__subtitle">Idiomas</h3>
-                <div class="skills__data"><i class='bx bx-world skills__icon'></i><span class="skills__name">Español (Nativo)</span></div>
-                <div class="skills__data"><i class='bx bx-world skills__icon'></i><span class="skills__name">Inglés (B2)</span></div>
-                <h3 class="skills__subtitle">Me gustaría aprender</h3>
-                <div class="skills__data"><i class='bx bx-world skills__icon'></i><span class="skills__name">Portugués</span></div>
-                <div class="skills__data"><i class='bx bx-world skills__icon'></i><span class="skills__name">Alemán</span></div>
+                <h3 class="skills__subtitle" data-translate="skills_languages">Idiomas</h3>
+                <div class="skills__data"><i class='bx bx-globe skills__icon'></i><span class="skills__name" data-translate="lang_spanish">Español (Nativo)</span></div>
+                <div class="skills__data"><i class='bx bx-globe skills__icon'></i><span class="skills__name" data-translate="lang_english">Inglés (B2)</span></div>
+                <h3 class="skills__subtitle" data-translate="skills_want_learn">Me gustaría aprender</h3>
+                <div class="skills__data"><i class='bx bx-globe skills__icon'></i><span class="skills__name" data-translate="lang_portuguese">Portugués</span></div>
+                <div class="skills__data"><i class='bx bx-globe skills__icon'></i><span class="skills__name" data-translate="lang_german">Alemán</span></div>
                 </div>
             </div>
             </section>
@@ -227,36 +232,36 @@
 
             <!--===== WORK =====-->
             <section class="work section" id="work">
-                <h2 class="section-title">Proyectos</h2>
+                <h2 class="section-title" data-translate="work_title">Proyectos</h2>
 
                 <div class="projects-container">
                     <div class="project">
-                        <h3>Modelo de predicción de renuncia de empleados</h3>
-                        <p><strong>Tecnologías:</strong> Python, scikit-learn, pandas, matplotlib.</p>
+                        <h3 data-translate="project1_title">Modelo de predicción de renuncia de empleados</h3>
+                        <p><strong data-translate="project1_tech">Tecnologías: Python, scikit-learn, pandas, matplotlib.</strong></p>
                         <ul>
-                            <li>Se aplicaron algoritmos supervisados (KNN, árboles de decisión y SVM) para predecir la probabilidad de abandono laboral.</li>
-                            <li>Análisis comparativo de modelos en función de su precisión y eficiencia.</li>
+                            <li data-translate="project1_desc1">Se aplicaron algoritmos supervisados (KNN, árboles de decisión y SVM) para predecir la probabilidad de abandono laboral.</li>
+                            <li data-translate="project1_desc2">Análisis comparativo de modelos en función de su precisión y eficiencia.</li>
                         </ul>
                     </div>
 
                     <div class="project">
-                        <h3>Aplicación distribuida de publicación y descarga de ficheros</h3>
-                        <p><strong>Tecnologías:</strong> Python, C, Sockets, WebService, RPC, concurrencia.</p>
+                        <h3 data-translate="project2_title">Aplicación distribuida de publicación y descarga de ficheros</h3>
+                        <p><strong data-translate="project2_tech">Tecnologías: Python, C, Sockets, WebService, RPC, concurrencia.</strong></p>
                         <ul>
-                            <li>Servidor concurrente en C para múltiples conexiones de clientes Python.</li>
-                            <li>Servidor RPC que registraba todas las acciones realizadas.</li>
-                            <li>Sistema Peer-to-Peer para compartir ficheros entre clientes sin pasar por un servidor central.</li>
-                            <li>Web Service desplegado para consultar fecha y hora.</li>
+                            <li data-translate="project2_desc1">Servidor concurrente en C para múltiples conexiones de clientes Python.</li>
+                            <li data-translate="project2_desc2">Servidor RPC que registraba todas las acciones realizadas.</li>
+                            <li data-translate="project2_desc3">Sistema Peer-to-Peer para compartir ficheros entre clientes sin pasar por un servidor central.</li>
+                            <li data-translate="project2_desc4">Web Service desplegado para consultar fecha y hora.</li>
                         </ul>
                     </div>
 
                     <div class="project">
-                        <h3>MyHomie! – Asistente de domótica</h3>
-                        <p><strong>Tecnologías:</strong> Node.js, JavaScript, HTML, CSS, APIs REST, Socket I/O.</p>
+                        <h3 data-translate="project3_title">MyHomie! – Asistente de domótica</h3>
+                        <p><strong data-translate="project3_tech">Tecnologías: Node.js, JavaScript, HTML, CSS, APIs REST, Socket I/O.</strong></p>
                         <ul>
-                            <li>Interfaz web conectada a un backend Node.js.</li>
-                            <li>Reconocimiento de gestos y comandos de voz desde móvil.</li>
-                            <li>Uso de diversas APIs para funciones domóticas avanzadas.</li>
+                            <li data-translate="project3_desc1">Interfaz web conectada a un backend Node.js.</li>
+                            <li data-translate="project3_desc2">Reconocimiento de gestos y comandos de voz desde móvil.</li>
+                            <li data-translate="project3_desc3">Uso de diversas APIs para funciones domóticas avanzadas.</li>
                         </ul>
                     </div>
                 </div>
@@ -266,23 +271,23 @@
 
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
-                <h2 class="section-title">Contacto</h2>
+                <h2 class="section-title" data-translate="contact_title">Contacto</h2>
                 
                 <div class="contact__container bd-grid">
                     <div class="contact-info">
                         <p>
                             <i class="fas fa-phone"></i>
-                            <strong> Teléfono:</strong> 
+                            <strong data-translate="contact_phone"> Teléfono:</strong> 
                             <a href="tel:+34686511487">+34 686 51 14 87</a>
                         </p>
                         <p>
                             <i class="fas fa-envelope"></i>
-                            <strong> Email:</strong> 
+                            <strong data-translate="contact_email"> Email:</strong> 
                             <a href="mailto:alonsoriosguerra04@gmail.com">alonsoriosguerra04@gmail.com</a>
                         </p>
                         <p>
                             <i class="fab fa-linkedin"></i>
-                            <strong> LinkedIn:</strong> 
+                            <strong data-translate="contact_linkedin"> LinkedIn:</strong> 
                             <a href="http://www.linkedin.com/in/alonso-rios-guerra-a48bbb34a" target="_blank">www.linkedin.com/in/alonsorios-guerra-a48bbb34a</a>
                         </p>
                     </div>
@@ -293,12 +298,15 @@
 
         <!--===== FOOTER =====-->
         <footer class="footer">
-            <p class="footer__copy">&#169; Alonso Rios Guerra. Template by Bedimcode</p>
+            <p class="footer__copy" data-translate="footer_copy">&#169; Alonso Rios Guerra. Template by Bedimcode</p>
         </footer>
 
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== i18n JS (Internationalization) =====-->
+        <script src="assets/js/i18n.js"></script>
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
