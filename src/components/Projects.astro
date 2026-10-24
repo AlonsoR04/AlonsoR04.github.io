@@ -1,0 +1,95 @@
+---
+import Icon from './Icon.astro';
+import { otherProjects } from '../data/projects';
+import { links, type Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div id="projects" class="section-head">
+  <p class="label">{t('projects.label')}</p>
+  <h2>{t('projects.title')}</h2>
+</div>
+
+{otherProjects.map((p) => (
+  <article class="card span-2 project">
+    <h3>{p.title[lang]}</h3>
+    <p class="project__summary">{p.summary[lang]}</p>
+    <ul class="project__bullets">
+      {p.bullets[lang].map((b) => <li>{b}</li>)}
+    </ul>
+    <ul class="chips" aria-label="Tech stack">
+      {p.stack.map((s) => <li>{s}</li>)}
+    </ul>
+    {p.repo && (
+      <a class="project__link" href={p.repo} target="_blank" rel="noopener">
+        <Icon name="github" />{t('projects.repo')}
+      </a>
+    )}
+  </article>
+))}
+
+<p class="span-4 more">
+  <a href={links.github} target="_blank" rel="noopener"><Icon name="github" />{t('projects.more')} →</a>
+</p>
+
+<style>
+  .project {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(22px, 3vw, 28px);
+  }
+  .project h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+  }
+  .project__summary {
+    margin: 0 0 1rem;
+    color: var(--color-muted);
+  }
+  .project__bullets {
+    margin: 0 0 1.2rem;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    flex: 1;
+    font-size: 0.95rem;
+  }
+  .project__bullets li::marker {
+    color: var(--color-primary);
+  }
+  .project__link,
+  .more a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    color: var(--color-primary-strong);
+    text-decoration: none;
+  }
+  .project__link:hover,
+  .more a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .project__link {
+    margin-top: 1rem;
+  }
+  .project__link :global(svg),
+  .more :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+  .more {
+    margin: 0;
+    padding: 0 4px;
+  }
+</style>

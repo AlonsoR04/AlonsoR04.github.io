@@ -1,0 +1,157 @@
+---
+// Habilidades, idiomas e intereses: una tarjeta por bloque dentro del bento.
+import Icon from './Icon.astro';
+import { interests, learning, skillsText, soft, spoken, technical } from '../data/skills';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = skillsText[lang];
+const cefr = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+---
+
+<div id="skills" class="section-head">
+  <p class="label">{s.label}</p>
+  <h2>{s.title}</h2>
+</div>
+
+<section class="card span-2 row-2" aria-labelledby={`tech-${lang}`}>
+  <h3 id={`tech-${lang}`}>{s.technical}</h3>
+  <dl class="groups">
+    {technical.map((g) => (
+      <div>
+        <dt>{g.group[lang]}</dt>
+        <dd><ul class="chips">{g.items.map((i) => <li>{i}</li>)}</ul></dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<section class="card span-2" aria-labelledby={`spoken-${lang}`}>
+  <h3 id={`spoken-${lang}`}>{s.spoken}</h3>
+  <ul class="langs">
+    {spoken.map((l) => (
+      <li>
+        <div class="langs__row"><span>{l.name[lang]}</span><b>{l.level[lang]}</b></div>
+        <div class="scale" aria-hidden="true">
+          {cefr.map((_, i) => <span class:list={{ on: l.cefr === null || i < l.cefr }} />)}
+        </div>
+      </li>
+    ))}
+  </ul>
+  <p class="label learning__label">{s.learning}</p>
+  <ul class="chips chips--goal">{learning[lang].map((l) => <li>{l}</li>)}</ul>
+</section>
+
+<section class="card" aria-labelledby={`soft-${lang}`}>
+  <h3 id={`soft-${lang}`}>{s.soft}</h3>
+  <ul class="checks">
+    {soft[lang].map((x) => <li><Icon name="check" />{x}</li>)}
+  </ul>
+</section>
+
+<section class="card" aria-labelledby={`int-${lang}`}>
+  <h3 id={`int-${lang}`}>{s.interests}</h3>
+  <ul class="interests">
+    {interests.map((i) => <li><span class="interests__icon"><Icon name={i.icon} /></span>{i.label[lang]}</li>)}
+  </ul>
+</section>
+
+<style>
+  .groups {
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  dt {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-muted);
+    margin-bottom: 0.4rem;
+  }
+  dd {
+    margin: 0;
+  }
+  .langs {
+    list-style: none;
+    margin: 0 0 1.2rem;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .langs__row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .langs__row b {
+    color: var(--color-primary);
+  }
+  .scale {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+  }
+  .scale span {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--color-primary-soft);
+  }
+  .scale span.on {
+    background: var(--color-primary);
+  }
+  .learning__label {
+    margin-bottom: 0.5rem;
+  }
+  .chips--goal li {
+    background: transparent;
+    border-style: dashed;
+    border-color: var(--color-primary);
+    color: var(--color-primary-strong);
+  }
+  .checks,
+  .interests {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+  }
+  .checks li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .checks :global(svg) {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    margin-top: 2px;
+    color: var(--color-primary);
+  }
+  .interests li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 600;
+  }
+  .interests__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+  .interests__icon :global(svg) {
+    width: 22px;
+    height: 22px;
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+import type { Lang } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const other: Lang = lang === 'en' ? 'es' : 'en';
+const otherPath = localizePath(Astro.url.pathname, other);
+---
+
+<header class="wrap header">
+  <a class="logo" href={localizePath('/', lang)}>
+    <span class="logo__mark" aria-hidden="true">AR</span>
+    <span>Alonso Ríos Guerra</span>
+  </a>
+  <nav aria-label="Main">
+    <a href="#work">{t('nav.work')}</a>
+    <a href="#about">{t('nav.about')}</a>
+    <a href="#skills">{t('nav.skills')}</a>
+    <a href="#contact">{t('nav.contact')}</a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <span class="lang__current" aria-current="true">{lang.toUpperCase()}</span>
+    <a class="lang__link" href={otherPath} hreflang={other} lang={other} title={t('lang.switch')} data-lang-switch>
+      {other.toUpperCase()}
+    </a>
+  </div>
+</header>
+
+<script>
+  // Conserva la sección (ancla) al cambiar de idioma.
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (location.hash) link.href = link.href.split('#')[0] + location.hash;
+    });
+  });
+</script>
+
+<style>
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 800;
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .logo:hover span:last-child {
+    color: var(--color-primary);
+  }
+  .logo__mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    display: grid;
+    place-items: center;
+    font-size: 0.85rem;
+  }
+  nav {
+    display: flex;
+    gap: 1.25rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--color-muted);
+  }
+  nav a:hover {
+    color: var(--color-primary);
+  }
+  .lang {
+    display: flex;
+    align-items: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    padding: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .lang > * {
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .lang__current {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .lang__link {
+    color: var(--color-muted);
+  }
+  .lang__link:hover {
+    color: var(--color-primary);
+  }
+  @media (max-width: 560px) {
+    nav {
+      display: none;
+    }
+  }
+</style>

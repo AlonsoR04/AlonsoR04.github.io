@@ -1,0 +1,88 @@
+---
+// Muestra una portada y solo carga el iframe de YouTube al hacer clic (no penaliza la carga inicial).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  videoId: string;
+  poster: ImageMetadata;
+  label: string;
+  title: string;
+}
+
+const { videoId, poster, label, title } = Astro.props;
+---
+
+<a
+  class="video"
+  href={`https://www.youtube.com/watch?v=${videoId}`}
+  data-video-id={videoId}
+  data-video-title={title}
+  aria-label={label}
+  target="_blank"
+  rel="noopener"
+>
+  <Image src={poster} alt="" widths={[480, 800, 1280]} sizes="(max-width: 900px) 100vw, 680px" loading="eager" class="video__poster" />
+  <span class="video__play"><Icon name="play" /></span>
+</a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('a[data-video-id]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${link.dataset.videoId}?autoplay=1&rel=0`;
+      iframe.title = link.dataset.videoTitle ?? '';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'video__frame';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'video';
+      wrapper.appendChild(iframe);
+      link.replaceWith(wrapper);
+      iframe.focus();
+    });
+  });
+</script>
+
+<style is:global>
+  .video {
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--color-inverse-bg);
+  }
+  .video__poster,
+  .video__frame {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    display: block;
+  }
+  .video__play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-primary);
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s;
+  }
+  .video__play svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 3px;
+  }
+  .video:hover .video__play {
+    transform: scale(1.06);
+  }
+</style>

@@ -1,0 +1,42 @@
+# Solo se versiona lo que necesita la GitHub Action para compilar y publicar la web:
+# src/, public/, package.json, package-lock.json, astro.config.mjs, tsconfig.json,
+# .github/workflows/, README.md y este .gitignore.
+# (Hasta la migración a Astro: index.html y assets/.)
+
+# --- Infraestructura de Claude y documentación interna (solo en local) ---
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.mcp.json
+.playwright-mcp/
+/docs/
+
+# --- Dependencias y salida del build (se regeneran) ---
+node_modules/
+dist/
+.astro/
+
+# --- Secretos y variables de entorno ---
+.env
+.env.*
+
+# --- Logs y cachés ---
+*.log
+npm-debug.log*
+.npm/
+.cache/
+lighthouse*.json
+lighthouse*.html
+
+# --- Editor y sistema operativo ---
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- Material de trabajo pesado (nunca al repo) ---
+*.mp4
+*.mov
+*.webm
+*.zip

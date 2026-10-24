@@ -1,0 +1,44 @@
+---
+import Icon from './Icon.astro';
+import { links, type Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+// Permite el salto de línea solo antes de la "@" en pantallas estrechas.
+const [emailUser, emailDomain] = links.email.split('@');
+---
+
+<section id="contact" class="card span-4 contact" aria-labelledby="contact-title">
+  <p class="label">{t('contact.label')}</p>
+  <h2 id="contact-title">{t('contact.title')}</h2>
+  <div class="contact__actions">
+    <a class="btn btn--primary" href={`mailto:${links.email}`}><Icon name="mail" /><span>{emailUser}<wbr />@{emailDomain}</span></a>
+    <a class="btn btn--outline-light" href={links.linkedin} rel="me noopener" target="_blank"><Icon name="linkedin" />LinkedIn</a>
+    <a class="btn btn--outline-light" href={links.github} rel="me noopener" target="_blank"><Icon name="github" />GitHub</a>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--color-inverse-bg);
+    color: var(--color-inverse-text);
+  }
+  .contact .label {
+    color: var(--color-inverse-muted);
+  }
+  h2 {
+    margin: 0 0 1.2rem;
+    font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+    letter-spacing: -0.02em;
+  }
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+</style>

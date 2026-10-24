@@ -1,0 +1,210 @@
+/* Tokens de diseño. Un futuro modo oscuro solo tiene que redefinir este bloque. */
+:root {
+  --color-bg: #f3f6fd;
+  --color-surface: #ffffff;
+  --color-text: #0a1530;
+  --color-muted: #4d5a76;
+  --color-primary: #2357f5;
+  --color-primary-strong: #133bb8;
+  --color-primary-soft: #e6edff;
+  --color-on-primary: #ffffff;
+  --color-line: #e2e8f5;
+  --color-inverse-bg: #0a1530;
+  --color-inverse-text: #ffffff;
+  --color-inverse-muted: rgba(255, 255, 255, 0.72);
+  --color-focus: #f5a623;
+
+  --font-sans: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --gap: 14px;
+  --maxw: 1120px;
+  --shadow: 0 1px 2px rgba(10, 21, 48, 0.04), 0 8px 24px rgba(10, 21, 48, 0.06);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  background: var(--color-surface);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Bento */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.row-2 { grid-row: span 2; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .span-3, .span-4 { grid-column: span 2; }
+}
+
+@media (max-width: 560px) {
+  .span-2, .span-3, .span-4, .card { grid-column: 1 / -1; }
+  .row-2 { grid-row: auto; }
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin: 0 0 0.6rem;
+}
+
+/* Cabecera de sección dentro del bento */
+.section-head {
+  grid-column: 1 / -1;
+  padding: clamp(28px, 5vw, 44px) 4px 2px;
+  scroll-margin-top: 16px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.card h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chips li {
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  line-height: 1.2;
+  overflow-wrap: normal;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.btn--primary { background: var(--color-primary); color: var(--color-on-primary); }
+.btn--light { background: var(--color-surface); color: var(--color-primary-strong); }
+.btn--outline-light { border: 1.5px solid rgba(255, 255, 255, 0.55); color: var(--color-on-primary); }
+
+.btn {
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn--primary:hover { background: var(--color-primary-strong); box-shadow: 0 6px 16px rgba(35, 87, 245, 0.3); }
+.btn--light:hover { background: var(--color-primary-soft); }
+.btn--outline-light:hover { background: rgba(255, 255, 255, 0.14); border-color: var(--color-on-primary); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+  .btn:hover { transform: none; }
+}

@@ -1,0 +1,7 @@
+# Archivos binarios: Git no debe convertir finales de línea (con core.autocrlf=true podría corromperlos).
+*.pdf  binary
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.webp binary
+*.woff2 binary

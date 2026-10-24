@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import CaseStudy from './CaseStudy.astro';
+import Projects from './Projects.astro';
+import About from './About.astro';
+import SkillsCards from './SkillsCards.astro';
+import Contact from './Contact.astro';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Base lang={lang}>
+  <Header lang={lang} />
+  <main id="main" class="wrap">
+    <div class="grid">
+      <Hero lang={lang} />
+      <CaseStudy lang={lang} />
+      <Projects lang={lang} />
+      <About lang={lang} />
+      <SkillsCards lang={lang} />
+      <Contact lang={lang} />
+    </div>
+  </main>
+  <footer class="wrap footer">
+    <p>{t('footer.copy')}</p>
+  </footer>
+</Base>
+
+<style>
+  .footer {
+    padding-top: 24px;
+    padding-bottom: 32px;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+  .footer p {
+    margin: 0;
+  }
+</style>
